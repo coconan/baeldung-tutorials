@@ -14,10 +14,10 @@ public interface PersonMapper {
 	@Insert("Insert into person(name) values (#{name})")
 	public Integer save(Person person);
 
-	@Update("Update Person set name= #{name} where personId=#{personId}")
+	@Update("Update person set name= #{name} where personId=#{personId}")
 	public void updatePerson(Person person);
 
-	@Delete("Delete from Person where personId=#{personId}")
+	@Delete("Delete from person where personId=#{personId}")
 	public void deletePersonById(Integer personId);
 
 	@Select("SELECT person.personId, person.name FROM person WHERE person.personId = #{personId}")
@@ -33,7 +33,7 @@ public interface PersonMapper {
 	@Select("select addressId,streetAddress,personId from address where personId=#{personId}")
 	public Address getAddresses(Integer personId);
 
-	@Select("select * from Person ")
+	@Select("select * from person ")
 	@MapKey("personId")
 	Map<Integer, Person> getAllPerson();
 
