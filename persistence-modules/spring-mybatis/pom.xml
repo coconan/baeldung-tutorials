@@ -27,11 +27,11 @@
             <version>${org.springframework.version}</version>
         </dependency>
         <!-- SpringBoot -->
-        <dependency>
+        <!-- <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis-spring-boot-starter.version}</version>
-        </dependency>
+        </dependency> -->
         <!-- Persistence -->
         <dependency>
             <groupId>com.h2database</groupId>
