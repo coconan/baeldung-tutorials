@@ -2,6 +2,7 @@ package com.baeldung.mybatis.utils;
 
 import com.baeldung.mybatis.mapper.AddressMapper;
 import com.baeldung.mybatis.mapper.PersonMapper;
+import com.baeldung.mybatis.model.Address;
 import com.baeldung.mybatis.model.Person;
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.jdbc.SQL;
@@ -38,7 +39,7 @@ public class MyBatisUtil {
 		return sqlSessionFactory;
 	}
 
-	public String getPersonByName(String name) {
+	public static String getPersonByName() {
 		return new SQL() {
 			{
 				SELECT("*");
@@ -55,9 +56,25 @@ public class MyBatisUtil {
 
 		try (SqlSession session = sqlSessionFactory.openSession()) {
 			PersonMapper pm = session.getMapper(PersonMapper.class);
+
+			System.out.println("\ngetAllPerson:");
 			Map<Integer, Person> personMap = pm.getAllPerson();
-			System.out.println(personMap.get(1).getName());
-			System.out.println(personMap.get(2).getName());
+			if (personMap.size() >= 2) {
+				System.out.println(personMap.get(1).getName());
+				System.out.println(personMap.get(2).getName());
+			}
+
+			System.out.println("\ndynamic sql:");
+			System.out.println(getPersonByName());
+			Person person = pm.getPersonByName("brian");
+			System.out.println(person.getName());
+
+			System.out.println("\ngetPersonById:");
+			Person brian = pm.getPersonById(1);
+			System.out.println(brian.getAddresses());
+			for (Address address : brian.getAddresses()) {
+				System.out.println(address.getStreetAddress());
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -23,7 +23,7 @@ public interface PersonMapper {
 	@Select("SELECT person.personId, person.name FROM person WHERE person.personId = #{personId}")
 	Person getPerson(Integer personId);
 
-	@Select("Select personId,name from Person where personId=#{personId}")
+	@Select("Select personId,name from person where personId=#{personId}")
 	@Results(value = { @Result(property = "personId", column = "personId"), @Result(property = "name", column = "name"),
 			@Result(property = "addresses", javaType = List.class, column = "personId", many = @Many(select = "getAddresses"))
 
