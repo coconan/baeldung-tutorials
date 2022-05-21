@@ -23,6 +23,11 @@
             <artifactId>mybatis</artifactId>
             <version>${mybatis.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.lettuce</groupId>
+            <artifactId>lettuce-core</artifactId>
+            <version>6.1.8.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>
